@@ -1,0 +1,164 @@
+
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+class shopping implements ActionListener
+{
+JFrame f;
+JComboBox<Object> c1,c2, s1;
+JLabel l1,l2,l3,l4,l5,l6,l7,l8,l9,l10;
+JRadioButton b1,b2;
+Container c;
+JButton r1,r2;
+ButtonGroup bg;
+JTextField t1,t2,t3,t4,t5,t6;
+JCheckBox c3;
+String s2[]={"T-SHIRT","TROUSER","LOWER","PANTS","SHOES"};
+String s3[]={"1","2","3","4","5"};
+String s4[]={"0","10","20","50","70","90"};
+shopping()
+{
+f=new JFrame("shopping calculator");
+c=f.getContentPane();
+l1=new JLabel("Enter customer name");
+t1=new JTextField();
+l2=new JLabel("Enter customer phone number");
+t2=new JTextField();
+l3=new JLabel("Select the product");
+c1=new JComboBox<Object>(s2);
+c1.addActionListener(this);
+l4=new JLabel("Select the quantity of product");
+c2=new JComboBox<Object>(s3);
+c2.addActionListener(this);
+l5=new JLabel("Select Discount");
+s1=new JComboBox<Object>(s4);
+s1.addActionListener(this);
+b1=new JRadioButton("male");
+b1.addActionListener(this);
+b2=new JRadioButton("Female (2% extra discount)");
+b2.addActionListener(this);
+bg=new ButtonGroup();
+bg.add(b1);
+bg.add(b2);
+c3=new JCheckBox("Special customer(5% extra discount)");
+c3.addActionListener(this);
+r1=new JButton("CALCULATE SHOPPING BILL");
+r1.addActionListener(this);
+r2=new JButton("VERIFY THE INFO..");
+l6=new JLabel("Total amount");
+t3=new JTextField();
+l7=new JLabel("Discount");
+t4=new JTextField();
+l8=new JLabel("Payable Amount");
+t5=new JTextField();
+l9=new JLabel("THANKYOU FOR COMING PLEASE COME AGAIN ...");
+l10=new JLabel("Enter the M.R.P of the product");
+t6=new JTextField();
+f.setSize(750,750);
+f.setVisible(true);
+f.setLayout(null);
+f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+c.setBackground(Color.GREEN);
+l1.setBounds(20,20,200,30);
+t1.setBounds(240,20,150,30);
+l2.setBounds(20,50,200,30);
+t2.setBounds(240,50,150,30);
+l3.setBounds(20,85,200,30);
+c1.setBounds(240,85,110,30);
+l10.setBounds(20,125,190,30);
+t6.setBounds(240,125,70,30);
+l4.setBounds(20,170,200,30);
+c2.setBounds(240,170,110,30);
+l5.setBounds(20,200,100,30);
+s1.setBounds(240,210,110,30);
+b1.setBounds(20,290,150,40);
+b2.setBounds(20,320,200,40);
+c3.setBounds(20,360,250,50);
+r1.setBounds(20,425,200,40);
+l6.setBounds(20,490,80,30);
+t3.setBounds(180,490,50,30);
+l7.setBounds(20,520,50,30);
+t4.setBounds(180,520,50,30);
+l8.setBounds(20,550,140,30);
+t5.setBounds(180,550,50,30);
+l9.setBounds(70,610,400,50);
+r2.setBounds(20,650,180,40);
+c.add(c1);
+c.add(c2);
+c.add(s1);
+c.add(l1);
+c.add(l2);
+c.add(l3);
+c.add(l4);
+c.add(l5);
+c.add(l6);
+c.add(l7);
+c.add(l8);
+c.add(b1);
+c.add(b2);
+c.add(r1);
+c.add(t1);
+c.add(t2);
+c.add(t3);
+c.add(t4);
+c.add(t5);
+c.add(c3);
+c.add(l9);
+c.add(l10);
+c.add(t6);
+c.add(r2);
+}
+int i1,i2,qu,i3,i4,i5,i6,i7,tm;
+public void actionPerformed(ActionEvent e)
+{
+	if(e.getSource()==c1)
+	{	
+	i1=c1.getSelectedIndex();
+	}
+	else if(e.getSource()==c2)
+	{	
+	i2=c2.getSelectedIndex();
+	qu=Integer.parseInt(s3[i2]);
+	i4=Integer.parseInt(t6.getText());
+	tm=i4*qu;
+	}
+	else if(e.getSource()==s1)
+	{
+	i3=s1.getSelectedIndex();
+	i5=Integer.parseInt(s4[i3]);
+	}
+	else if(e.getSource()==b2)
+	{
+		i5+=2;
+	}
+	else if(e.getSource()==c3)
+	{
+		i5+=5;
+	}
+	else if(e.getSource()==r1)
+	{
+		String sr1="";
+		String sr2="";
+		String sr3="";
+		sr1+=tm;
+		sr1+=" Rs";
+		t3.setText(sr1);
+		i6=(i5*tm)/100;
+		sr2+=i6;
+		sr2+=" Rs";
+		t4.setText(sr2);
+		i7=tm-i6;
+		sr3+=i7;
+		sr3+=" Rs";
+		t5.setText(sr3);
+	}
+	else if(e.getSource()==r2)
+	{
+	//	new shopping2()
+	}
+}
+public static void main(String args[])
+{
+new shopping();
+}
+}
