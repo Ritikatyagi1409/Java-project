@@ -1,0 +1,277 @@
+import javax.swing.*;
+import java.awt.event.*;
+import java.text.NumberFormat;
+import java.awt.*;
+class shopping implements ActionListener
+{
+JFrame f,f1;
+JComboBox<Object> c1,c2,s1;
+JLabel t,l1,l2,l3,l4,l5,l6,l7,l8,l9,l10,l11,l12,l13,l14;
+JRadioButton b1,b2;
+Container c;
+JButton r1,r2;
+ButtonGroup bg;
+JTextField t1,t2,t3,t4,t5,t6;
+JCheckBox c3;
+String s9,s8,s7;
+String s2[]={"T-SHIRT","TROUSER","LOWER","PANTS","SHOES"};
+String s3[]={"1","2","3","4","5"};
+String s4[]={"0","10","20","50","70","90"};
+shopping()
+{
+f=new JFrame("shopping calculator");
+c=f.getContentPane();
+l1=new JLabel("Enter customer name");
+t1=new JTextField();
+l2=new JLabel("Enter customer phone number");
+t2=new JTextField();
+l3=new JLabel("Select the product");
+c1=new JComboBox<Object>(s2);
+c1.addActionListener(this);
+l4=new JLabel("Select the quantity of product");
+c2=new JComboBox<Object>(s3);
+c2.getSelectedIndex();
+c2.addActionListener(this);
+l5=new JLabel("Select Discount");
+s1=new JComboBox<Object>(s4);
+s1.addActionListener(this);
+b1=new JRadioButton("male");
+b1.addActionListener(this);
+b2=new JRadioButton("Female (2% extra discount)");
+b2.addActionListener(this);
+bg=new ButtonGroup();
+bg.add(b1);
+bg.add(b2);
+c3=new JCheckBox("Special customer(5% extra discount)");
+c3.addActionListener(this);
+r1=new JButton("CALCULATE SHOPPING BILL");
+r1.addActionListener(this);
+r2=new JButton("PRINT THE BILL");
+r2.addActionListener(this);
+l6=new JLabel("Total amount");
+t3=new JTextField();
+l7=new JLabel("Discount");
+t4=new JTextField();
+l8=new JLabel("Payable Amount");
+t5=new JTextField();
+l9=new JLabel("THANKYOU FOR COMING PLEASE COME AGAIN ...");
+l10=new JLabel("Enter the M.R.P of the product");
+t6=new JTextField();
+t=new JLabel();
+f.setSize(750,750);
+f.setVisible(true);
+f.setLayout(null);
+f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+c.setBackground(Color.GREEN);
+l1.setBounds(20,20,200,30);
+t1.setBounds(240,20,150,30);
+l2.setBounds(20,50,200,30);
+t2.setBounds(240,50,150,30);
+l3.setBounds(20,85,200,30);
+c1.setBounds(240,85,110,30);
+l10.setBounds(20,125,190,30);
+t6.setBounds(240,125,70,30);
+t.setBounds(400,125,270,50);
+l4.setBounds(20,170,200,30);
+c2.setBounds(240,170,110,30);
+l5.setBounds(20,200,100,30);
+s1.setBounds(240,210,110,30);
+b1.setBounds(20,290,150,40);
+b2.setBounds(20,320,200,40);
+c3.setBounds(20,360,250,50);
+r1.setBounds(20,425,200,40);
+l6.setBounds(20,490,80,30);
+t3.setBounds(180,490,50,30);
+l7.setBounds(20,520,50,30);
+t4.setBounds(180,520,50,30);
+l8.setBounds(20,550,140,30);
+t5.setBounds(180,550,50,30);
+l9.setBounds(70,610,400,50);
+r2.setBounds(20,650,180,40);
+c.add(c1);
+c.add(c2);
+c.add(s1);
+c.add(l1);
+c.add(l2);
+c.add(l3);
+c.add(l4);
+c.add(l5);
+c.add(l6);
+c.add(l7);
+c.add(l8);
+c.add(b1);
+c.add(b2);
+c.add(r1);
+c.add(t1);
+c.add(t2);
+c.add(t3);
+c.add(t4);
+c.add(t5);
+c.add(c3);
+c.add(l9);
+c.add(l10);
+c.add(t6);
+c.add(r2);
+c.add(t);
+}
+int i1=-1,i2=-1,qu,i3,i4,i5,i6,i7,tm;
+String sr1="";
+String sr2="";
+String sr3="";
+public void printbill()
+{
+	String S1,S2,S3	;
+	f1=new JFrame("Billing");
+	c=f1.getContentPane();
+	S1=t1.getText();
+	S2=t2.getText();
+	i3=c1.getSelectedIndex();
+	S3=s2[i3];
+	l13=new JLabel("GRAND INDIAN MALL JAIPUR" );
+	l1=new JLabel(" Customer Name :");
+	l2.setText(S1);
+	l3=new JLabel("Phone Number :");
+	l4.setText(S2);
+	f1.setSize(750,750);
+	f1.setVisible(true);
+	f1.setLayout(null);
+	f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	c.setBackground(Color.WHITE);
+	l5=new JLabel("Product :");
+	l6.setText(S3);
+	l7=new JLabel("Total amount: ");
+	l8.setText(sr1);
+	l9=new JLabel("Discount :");
+	l10.setText(sr2);
+	l11=new JLabel("Payable Amount :");
+	l12=new JLabel(sr3);
+	l14=new JLabel("THANKYOU VISIT AGAIN");
+	c.add(l1);
+	c.add(l2);
+	c.add(l3);
+	c.add(l4);
+	c.add(l5);
+	c.add(l6);
+	c.add(l7);
+	c.add(l8);
+	c.add(l9);
+	c.add(l10);
+	c.add(l11);
+	c.add(l12);
+	c.add(l13);
+	c.add(l14);
+	l13.setBounds(200,20,200,50);
+	l1.setBounds(20,60,110,40);
+	l2.setBounds(160,60,110,40);
+	l3.setBounds(20,100,110,40);
+	l4.setBounds(160,100,110,40);
+	l5.setBounds(20,140,110,40);
+	l6.setBounds(160,140,110,40);
+	l7.setBounds(20,180,110,40);
+	l8.setBounds(160,180,110,40);
+	l9.setBounds(20,220,110,40);
+	l10.setBounds(160,220,110,40);
+	l11.setBounds(20,260,110,40);
+	l12.setBounds(160,260,110,40);
+	l14.setBounds(200,300,200,50);
+}
+public void actionPerformed(ActionEvent e)
+{
+	if(e.getSource()==c1)
+	{	
+	i1=c1.getSelectedIndex();
+	}
+	else if(e.getSource()==c2)
+	{	
+	i2=c2.getSelectedIndex();
+	qu=Integer.parseInt(s3[i2]);
+	i4=Integer.parseInt(t6.getText());
+	tm=i4*qu;
+	}
+	else if(e.getSource()==s1)
+	{
+	i3=s1.getSelectedIndex();
+	i5=Integer.parseInt(s4[i3]);
+	}
+	else if(e.getSource()==b2)
+	{
+		i5+=2;
+	}
+	else if(e.getSource()==c3)
+	{
+		i5+=5;
+	}
+	else if(e.getSource()==r1)
+
+	{
+		//validation for username 
+		s8=t1.getText();
+		if(!s8.matches("[a-zA-Z]+")){
+		JOptionPane.showMessageDialog(t2, "please enter valid username");
+		return;
+		}
+
+		//validation for mobile number 
+		s9=t2.getText();
+		if(s9.length()!=10){
+		JOptionPane.showMessageDialog(t2, "please enter valid mobile number");
+		return;
+	    }
+	     else{
+		if(!s9.matches("[0-9]+")){
+			JOptionPane.showMessageDialog(t2, "please enter valid mobile number");
+		return;
+		}
+	    }
+	//validation for choice 
+	if(i1==-1)
+	{
+		JOptionPane.showMessageDialog(t2, "please enter valid choice");
+	return;
+	}
+
+		//validation for mrp
+		if(t6.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(t6, "please enter mrp");
+			System.out.println("please eneter mrp ");
+			return;
+		} 
+		s7=t6.getText();
+		if(!s7.matches("[1-9]+")){
+			JOptionPane.showMessageDialog(t6, "please enter valid mrp");
+		return;
+		}
+
+	//validation for quantity
+	if(i2==-1)
+		{
+			JOptionPane.showMessageDialog(t2, "please enter Quantity");
+		return;
+		}
+
+		//calculation
+		sr1+=tm;
+		sr1+=" Rs";
+		t3.setText(sr1);
+		i6=(i5*tm)/100;
+		sr2+=i6;
+		sr2+=" Rs";
+		t4.setText(sr2);
+		i7=tm-i6;
+		sr3+=i7;
+		sr3+=" Rs";
+		t5.setText(sr3);
+	
+	}
+	else if(e.getSource()==r2)
+	{
+		f.dispose();
+		printbill();
+	}
+}
+public static void main(String args[])
+{
+new shopping();
+}
+}
